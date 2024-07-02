@@ -1,0 +1,761 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar{
+    width:10px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-track{
+    background-color: lightblue;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(#001b98,#0066FF);
+    border-radius: 3px;
+    border:solid 1px darkslategray;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url(bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    overflow: hidden;
+}
+
+ body.afterfirst{
+    overflow: visible;
+    overflow-x: hidden;
+}
+
+.maincontainer{
+    width: 100dvw;
+    max-height: 500dvh;
+    min-height: 500dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome{
+    display: flex;
+    width: 100%;
+    align-items: end;
+    justify-content: center;
+    color:wheat;
+    font-size: 30px;
+    min-height: 35dvh;
+    max-height: 35dvh;
+    z-index: 1;
+}
+
+.hidden{
+    opacity: 0;
+    display: none;
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Hidden widget(for username) */
+.username.done{
+    position: fixed;
+    z-index: -100;
+    opacity: 0;
+    height:0;
+    width:0;
+    margin:0;
+    padding:0;
+}
+
+.username{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    left:-1%;
+    height: 50%;
+}
+
+.username .input{
+    background-color: wheat;
+    border: solid 5px blue;
+    border-radius: 5px;
+    font-size:20px;
+    padding:20px;
+    height: 60px;
+    width: 10px;
+    transition: width 0.5s ease;
+}
+
+.NameButton{
+    background-color: blue;
+    color:wheat;
+    border:0;
+    border-radius: 10px;
+    font-size:40px;
+    position: absolute;
+    cursor:pointer;
+    width:60px;
+    height:60px;
+    transition:transform 0.5s ease;
+}
+
+.NameButton:focus,
+.input:focus{
+    outline:none;
+}
+
+.username.active .input{
+    width:400px;
+}
+
+.username.active .NameButton{
+    transform: translateX(170px);
+} 
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* PROGRESS BAR */
+.progress_container {
+    z-index: 100;
+    bottom: 0;
+    left: 35dvw;
+    right: 35dvw;
+    opacity: 0;
+    border: solid 2px darkgray;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: gray;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    min-height: 11dvh;
+    max-height: 11dvh;
+    min-width: 30dvw;
+    max-width: 30dvw;
+}
+
+#procent_text{
+    font-size: 15px;
+}
+
+.progressbar {
+  
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 400px;
+}
+
+.progressbar::before {
+    content: '';
+    background-color: lightgray;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+.progress {
+    background-color: darkblue;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 5px;
+    width: 0%;
+    transform: translateY(-50%);
+    transition: .4s ease;
+    z-index: 0;
+}
+
+.circle {
+    background-color: white;
+    color: gray;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid lightgray;
+    transition: .4s ease;
+    position: relative;
+}
+
+.circle.completed {
+    border-color: blue;
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* EXPANDING CARDS */
+.choice_1{
+    min-width: 20dvh;
+    max-width: 20dvh;
+    min-width: 60dvw;
+}
+
+.choice_1 h1{
+    color: wheat;
+
+}
+
+.panels {
+    display: flex;
+    flex-direction:row;
+    width: 60vw;
+    min-height: 65dvh;
+    max-height: 65dvh;
+    align-items: end;
+}
+
+.panel {
+    border:solid 2px red;
+    background-color: wheat;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50vh;
+    min-width: 5%;
+    border-radius: 50px;
+    color: black;
+    cursor: pointer;
+    flex: 1;
+    margin: 25px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    transition: flex 1s ease-in;
+}
+
+.panel h2 {
+    font-size: 30px;
+    background: transparent;
+    border: solid 2px lightgray;
+    color: whitesmoke;
+    border-radius: 10px;
+    position: relative;
+    top: -15%;
+    left: 20%;
+    margin: 0;
+    opacity: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+}
+
+.panel.active {
+    flex: 5;
+}
+
+.panel.active h2 {
+    transition: opacity 2s ease-in 0.2s;
+        /*Time for the transition=0.5 Delay=0.2 */
+    opacity: 1;
+}
+
+.move{
+    min-height: 35dvh;
+    max-height: 35dvh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+#move2{
+
+    align-items: baseline;
+
+}
+
+.movebtn{
+    position: absolute;
+    background-color: lightcoral;
+    color: black;
+    border: 0;
+    border-radius: 20px;
+    cursor: pointer;
+    height: 45px;
+    width: 50px;
+    font-size: 30px;
+    border: solid 2px darkred;
+    box-shadow: 20px;
+}
+
+.movebtn a{
+    text-decoration: none;
+    color: darkred;
+}
+
+#movebtn2 {
+    width: 150px;
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Blurry loading */
+
+.first{
+    width: 100%;
+    min-height: 25dvh;
+    max-height: 25dvh;
+
+}
+
+.loading-text.active{
+    
+    z-index: 100;
+    font-size: 30px;
+    width:100%;
+    height: 15dvh;
+    color: wheat;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 1;
+}
+
+.loading-text{
+    text-align: center;
+    min-height: 5dvh;
+    max-height: 5dvh;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+} 
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Flip card */
+
+.cardcontainer1{
+    position: relative;
+    width: 100dvw;
+    height: 22dvh;
+    display: flex;
+    justify-content: center;
+}
+
+.cardcontainer23{
+    position: relative;
+    width: 100dvw;
+    height: 22dvh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+.cardcontainer4{
+    position: relative;
+    width: 100dvw;
+    height: 22dvh;
+    display: flex;
+    justify-content: center;
+}
+
+.thecard{
+    border:solid 2px lightblue;
+    width: 13%;
+    height: 150%;
+    transform-style: preserve-3d;
+    transition: all 1.5s ease-out 0.5s;
+    font-size: 30px;
+}
+
+.thecard a{
+    text-decoration: none;
+    font-size: 60px;
+    color:wheat;
+}
+
+.thecard h2{
+    font-style: italic;
+    color: wheat;
+    font-size: 25px;
+}
+
+.front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+    border-radius: 20px;
+    border:solid 2px gray;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    color: wheat;
+}
+
+.back{
+    border-radius: 20px;
+    border:0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    color: black;
+    transform: rotateY(180deg);
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.back h2{  
+    min-height: 15%;
+    max-height: 15%;
+    top: 0;
+}
+
+.back p{   
+    background-color: rgba(255,255,255,0.2);
+    text-align: start;
+    font-size: 20px;
+    min-height: 15%;
+    max-height: 15%;
+    margin: 0;
+}
+
+#card1{
+    background: darkblue;
+}
+
+#Water{
+    background-image: url(card_water.svg);
+}
+
+#back1{
+    background-image: url(back_water.svg);
+}
+
+#card2{
+    background: darkgreen;
+}
+
+#Earth{
+    background-image: url(card_earth.svg);
+}
+
+#back2{
+    background-image: url(back_earth.svg);
+}
+
+#card3{
+    background: darkred;
+}
+
+#Fire{
+    background-image: url(card_fire.svg);
+}
+
+#back3{
+    background-image: url(back_fire.svg);
+}
+
+#card4{
+    background: darkgrey;
+}
+
+#Air{
+    background-image: url(card_air.svg);
+}
+
+#back4{
+    background-image: url(back_air.svg);
+}
+
+
+.thecard:hover{
+    transform: rotateY(180deg);
+}
+
+#container4 h1{
+    min-height: 10dvh;
+    max-height: 10dvh;
+    color: wheat;
+}
+
+.sidepicker{
+    height: 80dvh;
+    width: 60dvw;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.side a{
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: wheat;
+    background-color: none;
+}
+
+#Day a{
+    color:darkblue;
+}
+
+.side button{
+    background: black;
+    opacity: 0.8;
+
+}
+
+#Day button{
+    background: yellow;
+}
+
+
+
+.side{
+    border: solid 5px black;
+    height: 25dvw;
+    width: 25dvw;
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#Day{
+    background-image: url(sun.svg);
+}
+#Night{
+    background-image: url(moon.svg);
+}
+
+.side_result{
+    /* position: absolute; */
+    min-height: 30dvw;
+    max-height: 30dvw;
+    min-width: 30dvw;
+    max-width: 30dvw;
+    background-image: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+
+.trait_result{
+        position: relative;
+
+        top: -14dvw;
+        left: -5.5dvw;
+        min-height: 10dvw;
+        max-height: 10dvw;
+        min-width: 10dvw;
+        max-width: 10dvw;
+        align-self: center;
+        background-image: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: 11;
+}
+
+.repeat{
+    top: -8dvw;
+    border-radius: 10px;
+    border: solid 4px darkgoldenrod;
+    position: relative;
+    background-color: wheat;
+
+}
+.repeat a{
+    text-align: center;
+    color: black;
+    text-decoration: none;
+}
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Scroll animation */
+.container{
+    z-index: 2;
+}
+
+
+#container1{
+    color:black;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    display:flex;
+    flex-direction: column;
+    /* border: solid 2px cyan; */
+}
+
+#container2{
+    color:black;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    display:flex;
+    flex-direction: column;
+    /* border: solid 2px cyan; */
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 2s ease-in ;
+
+}
+
+#container2.show{
+    opacity: 1;
+}
+
+#container3{
+    color:wheat;
+    text-align: center;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    display:flex;
+    flex-direction: column;
+    /* border: solid 2px cyan; */
+    align-self: center;
+    opacity: 0;
+    transition: opacity 2s ease-in ;
+}
+
+#container3.show{
+    opacity: 1;
+}
+
+#container4{
+    color:black;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    display:flex;
+    flex-direction: column;
+    /* border: solid 2px cyan; */
+    opacity: 0;
+    transition: opacity 2s ease-in ;
+    text-align: center;
+    padding: 0;
+}
+
+#container4.show{
+    opacity: 1;
+} 
+
+#container5{
+    min-height: 100dvh;
+    max-height: 100dvh;
+    display:flex;
+    flex-direction: column;
+    /* border: solid 2px cyan; */
+    opacity: 0;
+    transition: opacity 2s ease-in ;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: wheat;
+}
+
+#container5.show{
+    opacity: 1;
+} 
+
+@media(max-width:700px) {
+    .progress_container {
+        min-width: 60dvw;
+        max-width: 60dvw;
+        left: 20dvw;
+        right: 20dvw;
+    }
+
+    .panels {
+        width: 80vw;
+        min-height: 70dvh;
+        max-height: 70dvh;
+        flex-direction:column;
+        align-items: center;
+    }
+    
+    .panel {
+        min-width: 50%;
+        margin: 5px;
+    }
+
+    .panel h2 {
+        font-size: 15px;
+        color: black;
+        border: solid 2px darkgrey;
+    }
+    #container3{
+        flex-direction: column;
+    }
+
+    #trait_text{
+        min-height: 3dvh;
+        max-height: 3dvh;
+        font-size: 20px;
+    }
+
+    .back p{
+        font-size: 15px;
+        font-weight: bold ;
+    }
+
+    .cardcontainer1{
+        height: 15dvh;
+    }
+
+    .cardcontainer23{
+        flex-direction: column;
+        height: 35dvh;
+    }
+
+    .cardcontainer4{
+        height: 15dvh;
+    }
+
+    .thecard{
+        width: 50dvw;
+        height: 15dvh;
+        align-self: center;
+    }
+
+    .thecard a{
+        font-size: 40px;
+    }
+
+    .sidepicker{
+        flex-direction: column;
+        align-items: center;
+        height: 50dvh;
+    }
+
+    .side{
+        min-height: 24dvh;
+        max-height: 24dvh;
+        min-width: 24dvh;
+        max-width: 24dvh;
+
+    }
+    .side a{
+        font-size: 20px;
+    }
+
+    #container5{
+        font-size: 10px;
+    }
+}
+
+

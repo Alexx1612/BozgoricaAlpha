@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 02.Expanding Cards   03.Progress Bar/Steps   05.Hidden Widget     06.Blurry Loading    07.Scroll animation-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>first 5</title>
+</head>
+<!-- https://fontawesome.com/icons -->
+<body>
+
+<a href="#" id="TOP_of_PAGE" style="pointer-events: auto;"></a>
+    <div class="maincontainer">
+
+        <!-- PROGESS BAR -->
+        <div class="progress_container">
+            <h1 id="procent_text">Quest Completion Steps</h1>
+            <div class="progressbar">
+                <div class="progress" id="progress"></div>
+                <div class="circle completed">1</div>
+                <div class="circle">2</div>
+                <div class="circle">3</div>
+                <div class="circle">4</div>
+            </div>
+        </div>
+
+        <!-- USERNAME -->
+        <div class="container" id="container1">
+            <div class="welcome">
+                <h1 id="welcome_text">WELCOME</h1>
+            </div>
+            <div class="loading-text">0%</div>
+            <div class="first">
+                <div class="username">
+                    <input type="text" class="input" id="username" placeholder="Enter your name...">
+                    <button class="NameButton">
+                        <i class="fas fa-ghost"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="move" id="move1">
+                <button class="movebtn hidden"  id="movebtn1"><a href="#container2" id="movetonext1"><i class="fa-solid fa-angles-down"></i></a></button>
+            </div>
+        </div>
+
+        <!-- CLASS -->
+        <div class="container" id="container2">
+            <div class="choice_1">
+                <h1 id="class_text">Type your username before picking a class <a href="#container1" id="class_ref" style="color:wheat;"> <i class="fa-solid fa-turn-up"></i> </a></h1>
+                </div>
+            <div class="panels" id="panels">
+                <div class="panel" style="background-image: url(dog_black.png) ;" id="1">
+                    <h2 class="choosebtn">Tank</h2>
+                </div>
+                <div class="panel" style="background-image: url(dog_golden.png) ;" id="2">
+                    <h2 class="choosebtn">Fighter</h2>
+                </div>
+                <div class="panel" style="background-image: url(dog_white.png) ;" id="3">
+                    <h2 class="choosebtn">Ranger</h2>
+                </div>
+                <div class="panel" style="background-image: url(puppy_white.png) ;" id="4">
+                    <h2 class="choosebtn">Bard</h2>
+                </div>
+                <div class="panel" style="background-image: url(wolf_grey.png) ;" id="5">
+                    <h2 class="choosebtn">Alchemist</h2>
+                </div>
+            </div>
+            <div class="move" id="move2" style="min-height: 20dvh; max-height: 20dvh;">
+                <button class="movebtn hidden"  id="movebtn2" ><a href="#container3" id="movetonext2">CHOOSE</a></button>
+            </div>
+        </div>
+            
+        <!-- TRAIT -->
+        <div class="container" id="container3">
+            <h1 id="trait_text">You must pick a class before choosing a trait! <a href="#container2" id="trait_ref" style="color:wheat;"> <i class="fa-solid fa-turn-up"></i> </a> </h1>
+            <div class="cardcontainer1"> 
+                <div class="thecard" id="card1">
+                    <div class="front" id="Water"><a class="trait_chooser"  href="#container4"><h1><i class="fa-solid fa-droplet"></i></h1></a></div>
+                    <div class="back" id="back1"><h2>Go with the flow</h2>
+                        <p><i class="fa-solid fa-caret-right"></i> Heal near ponds</p>
+                        <p><i class="fa-solid fa-caret-right"></i> Become slippery</p>
+                        <p><i class="fa-solid fa-caret-right"></i> Ability: "Rain Dance"</p>                           
+                    </div>
+                </div>
+            </div>
+            <div class="cardcontainer23"> 
+                <div class="thecard" id="card2">
+                    <div class="front"  id="Earth"><a class="trait_chooser" href="#container4"><h1>🗿</h1></a></div>
+                    <div class="back" id="back2"><h2>Hard as a rock</h2>
+                        <p><i class="fa-solid fa-caret-right"></i> Though skin</p>
+                        <p><i class="fa-solid fa-caret-right"></i> Rock connoisseur</p>
+                        <p><i class="fa-solid fa-caret-right"></i> Ability: "Mud Solid"</p>
+                    </div>
+                </div>
+                <div class="thecard" id="card3">
+                    <div class="front" id="Fire" ><a class="trait_chooser" href="#container4"><h1><i class="fa-solid fa-fire"></i></h1></a></div>
+                    <div class="back" id="back3"><h2>Feel the heat</h2>
+                        <p><i class="fa-solid fa-caret-right"></i> Heat resistance</p>
+                        <p><i class="fa-solid fa-caret-right"></i> Scrappy molotoves</p>
+                        <p><i class="fa-solid fa-caret-right"></i> Ability: "Pheonix"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cardcontainer4">
+                <div class="thecard" id="card4">
+                    <div class="front"  id="Air"><a class="trait_chooser" href="#container4"><h1><i class="fa-solid fa-wind"></i></h1></a></div>
+                    <div class="back" id="back4">                           
+                        <h2>Blow them all</h2>
+                        <p><i class="fa-solid fa-caret-right"></i> Move swiftly</p>
+                        <p><i class="fa-solid fa-caret-right"></i> Less encumbrance</p>
+                        <p><i class="fa-solid fa-caret-right"></i> Ability: "Current Pull"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDE -->
+        <div class="container" id="container4">
+            <h1 id="side_text">You must choose a trait before joining a side! <a href="#container3" style="color:wheat;"><i class="fa-solid fa-turn-up"></i></a> </h1>
+            <div class="sidepicker">
+                <div class="side" id="Day">
+                    <button class="picker" id="1"><a href="#container5">Day-Enjoyers</a></button>
+                </div>
+                <div class="side" id="Night">
+                    <button class="picker" id="2"><a href="#container5">Night-Dwellers</a></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT -->
+        <div class="container" id="container5">
+            <h1 class="Character_text">You need to complete all the steps before revealing your character <a href="#container1" style="color:wheat;"> <i class="fa-solid fa-turn-up"></i> </a></h1>
+            <div class="side_result" id="side_result"></div>
+            <div class="trait_result" id="trait_result"></div>
+            <div class="repeat hidden" id="repeat"><a href="#container2">REMAKE</a></div>
+        </div>
+    </div>
+
+    
+
+    <!-- <nav>
+        <ul>
+            <li><i class="fas fa-hat-wizard"></i>Choose</li>
+            <li><i class="fas fa-ghost"></i>Back</li>
+            <li><i class="fas fa-heart"></i>Next</li>
+        </ul>
+    </nav> -->
+   
+</body>
+
+</html>
